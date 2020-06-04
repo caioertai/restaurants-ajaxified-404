@@ -11,4 +11,9 @@
       <p><%= review.content %></p>
     <% end %>
   <% end %>
+  <hr>
+  <%= simple_form_for([@restaurant, @review]) do |f| %>
+    <%= f.input :content %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
 </div>
