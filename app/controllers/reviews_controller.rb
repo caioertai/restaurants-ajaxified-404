@@ -5,10 +5,16 @@ class ReviewsController < ApplicationController
     @review.restaurant = @restaurant
 
     if @review.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to restaurant_path(@restaurant, anchor: "review-#{@review.id}")
     else
       render "restaurants/show"
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to @review.restaurant
   end
 
   private
